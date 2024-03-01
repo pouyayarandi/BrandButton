@@ -20,6 +20,6 @@ enum Color: String {
 
 extension Color {
     var color: UIColor {
-        .init(named: rawValue)
+        .init(named: rawValue) ?? .init()
     }
 }
