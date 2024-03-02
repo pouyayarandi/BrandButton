@@ -14,12 +14,11 @@ enum Color: String {
     case greenPrimaryDefault = "green.primary.default"
     case greenPrimaryPressed = "green.primary.pressed"
     case greenSecondaryPressed = "green.secondary.pressed"
-    case gray
-    case white
+    case grayDisabled = "gray.disabled"
 }
 
 extension Color {
     var color: UIColor {
-        .init(named: rawValue) ?? .init()
+        .init(named: rawValue, in: .module, compatibleWith: nil) ?? .init()
     }
 }
