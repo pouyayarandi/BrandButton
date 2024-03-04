@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     }
 
     @objc private func buttonTapped() {
-        print("Button tapped")
+        button.fullWidth.toggle()
     }
 
     private func setupSegment() {

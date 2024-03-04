@@ -17,14 +17,16 @@ struct TestDataGenerator {
         let leadingIcon: UIImage?
         let trailingIcon: UIImage?
         let isEnabled: Bool
+        let fullWidth: Bool
     }
 
     let labels: [String]
-    let highlights: [Bool]
+    var highlights: [Bool] = [false]
     let variants: [BrandButton.VariantType]
-    let leadingIcons: [UIImage?]
-    let trailingIcons: [UIImage?]
-    let enables: [Bool]
+    var leadingIcons: [UIImage?] = [nil]
+    var trailingIcons: [UIImage?] = [nil]
+    var enables: [Bool] = [true]
+    var fullWidths: [Bool] = [false]
 
     func generate() -> [TestData] {
         var testData: [TestData] = []
@@ -35,14 +37,17 @@ struct TestDataGenerator {
                     for leadingIcon in leadingIcons {
                         for trailingIcon in trailingIcons {
                             for enable in enables {
-                                testData.append(.init(
-                                    label: label,
-                                    isHighlighted: highlight,
-                                    variant: variant,
-                                    leadingIcon: leadingIcon,
-                                    trailingIcon: trailingIcon,
-                                    isEnabled: enable
-                                ))
+                                for fullWidth in fullWidths {
+                                    testData.append(.init(
+                                        label: label,
+                                        isHighlighted: highlight,
+                                        variant: variant,
+                                        leadingIcon: leadingIcon,
+                                        trailingIcon: trailingIcon,
+                                        isEnabled: enable,
+                                        fullWidth: fullWidth
+                                    ))
+                                }
                             }
                         }
                     }

@@ -33,10 +33,7 @@ final class BrandButtonTests: XCTestCase {
         let generator = TestDataGenerator(
             labels: ["Button"],
             highlights: [false, true],
-            variants: [.bluePrimary, .blueSecondary, .greenPrimary, .greenSecondary],
-            leadingIcons: [nil],
-            trailingIcons: [nil],
-            enables: [true]
+            variants: [.bluePrimary, .blueSecondary, .greenPrimary, .greenSecondary]
         )
         assertDataSet(generator.generate())
     }
@@ -46,9 +43,7 @@ final class BrandButtonTests: XCTestCase {
             labels: ["Leading Icon"],
             highlights: [false, true],
             variants: [.bluePrimary],
-            leadingIcons: [.init(systemName: "checkmark.seal.fill")],
-            trailingIcons: [nil],
-            enables: [true]
+            leadingIcons: [.init(systemName: "checkmark.seal.fill")]
         )
         assertDataSet(generator.generate())
     }
@@ -58,9 +53,7 @@ final class BrandButtonTests: XCTestCase {
             labels: ["Trailing Icon"],
             highlights: [false, true],
             variants: [.bluePrimary],
-            leadingIcons: [nil],
-            trailingIcons: [.init(systemName: "checkmark.seal.fill")],
-            enables: [true]
+            trailingIcons: [.init(systemName: "checkmark.seal.fill")]
         )
         assertDataSet(generator.generate())
     }
@@ -68,28 +61,31 @@ final class BrandButtonTests: XCTestCase {
     func testBrandButton_Disabled() {
         let generator = TestDataGenerator(
             labels: ["Disabled Button"],
-            highlights: [false],
             variants: [.bluePrimary, .blueSecondary],
-            leadingIcons: [nil],
-            trailingIcons: [nil],
             enables: [false]
         )
         assertDataSet(generator.generate())
     }
 
     func testBrandButton_CustomVariant() {
-        let yellowPrimary = PrimaryVariant(
-            normalColor: .systemYellow, 
+        let variant = PrimaryVariant(
+            normalColor: .systemYellow,
             highlightedColor: .systemOrange,
             textColor: .black
         )
         let generator = TestDataGenerator(
             labels: ["Custom Button"],
             highlights: [false, true],
-            variants: [.custom(yellowPrimary)],
-            leadingIcons: [nil],
-            trailingIcons: [nil],
-            enables: [true]
+            variants: [.custom(variant)]
+        )
+        assertDataSet(generator.generate())
+    }
+
+    func testBrandButton_FullWidth() {
+        let generator = TestDataGenerator(
+            labels: ["Full Width Button"],
+            variants: [.bluePrimary, .blueSecondary],
+            fullWidths: [true]
         )
         assertDataSet(generator.generate())
     }
@@ -135,6 +131,7 @@ final class BrandButtonTests: XCTestCase {
             button.leadingIcon = data.leadingIcon
             button.trailingIcon = data.trailingIcon
             button.isEnabled = data.isEnabled
+            button.fullWidth = data.fullWidth
             assertSnapshot(testName: testName)
         }
     }

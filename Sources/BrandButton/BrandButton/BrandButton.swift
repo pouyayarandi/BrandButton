@@ -48,6 +48,12 @@ public class BrandButton: UIControl {
         }
     }
 
+    public var fullWidth: Bool = false {
+        didSet {
+            widthConstraint?.isActive = fullWidth
+        }
+    }
+
     public override var isEnabled: Bool {
         didSet {
             updateAppearance(animated: updateWithAnimation)
@@ -70,12 +76,21 @@ public class BrandButton: UIControl {
         setup()
     }
 
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        guard let superview else { return }
+        widthConstraint = widthAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.widthAnchor)
+        widthConstraint?.priority = .defaultLow
+        widthConstraint?.isActive = fullWidth
+    }
+
     // MARK: - Privates
 
     private var contentStack: UIStackView = .init()
     private var textLabel: UILabel = .init()
     private var leadingIconView: UIImageView = .init()
     private var trailingIconView: UIImageView = .init()
+    private var widthConstraint: NSLayoutConstraint?
 
     private func setup() {
         setupButton()
@@ -98,6 +113,7 @@ public class BrandButton: UIControl {
         contentStack.isUserInteractionEnabled = false
         contentStack.heightAnchor.constraint(equalToConstant: 24).isActive = true
         addSubview(contentStack, withInsets: .init(top: 10, leading: 16, bottom: 10, trailing: 16))
+        contentStack.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
 
     private func setupLeadingIconView() {
