@@ -48,18 +48,6 @@ public class BrandButton: UIControl {
         }
     }
 
-    // MARK: - Inherited methods
-
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-
     public override var isEnabled: Bool {
         didSet {
             updateAppearance(animated: updateWithAnimation)
@@ -70,6 +58,16 @@ public class BrandButton: UIControl {
         didSet {
             updateAppearance(animated: updateWithAnimation)
         }
+    }
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
     }
 
     // MARK: - Privates
@@ -104,8 +102,8 @@ public class BrandButton: UIControl {
 
     private func setupLeadingIconView() {
         leadingIconView.contentMode = .scaleAspectFit
-        leadingIconView.heightAnchor.constraint(equalToConstant: 24)
-        leadingIconView.widthAnchor.constraint(equalToConstant: 24)
+        leadingIconView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        leadingIconView.widthAnchor.constraint(equalToConstant: 24).isActive = true
         leadingIconView.translatesAutoresizingMaskIntoConstraints = false
         leadingIconView.isHidden = true
         contentStack.addArrangedSubview(leadingIconView)
@@ -120,8 +118,8 @@ public class BrandButton: UIControl {
 
     private func setupTrailingIconView() {
         trailingIconView.contentMode = .scaleAspectFit
-        trailingIconView.heightAnchor.constraint(equalToConstant: 24)
-        trailingIconView.widthAnchor.constraint(equalToConstant: 24)
+        trailingIconView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        trailingIconView.widthAnchor.constraint(equalToConstant: 24).isActive = true
         trailingIconView.translatesAutoresizingMaskIntoConstraints = false
         trailingIconView.isHidden = true
         contentStack.addArrangedSubview(trailingIconView)
