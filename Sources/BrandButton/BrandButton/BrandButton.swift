@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BrandButton: UIButton {
+public class BrandButton: UIControl {
 
     // MARK: - Public properties
 
@@ -71,9 +71,6 @@ public class BrandButton: UIButton {
             updateAppearance(animated: updateWithAnimation)
         }
     }
-
-    override public func setTitle(_ title: String?, for state: UIControl.State) {}
-    override public func setImage(_ image: UIImage?, for state: UIControl.State) {}
 
     // MARK: - Privates
 
