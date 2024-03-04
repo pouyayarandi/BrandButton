@@ -9,6 +9,8 @@ import UIKit
 
 public class BrandButton: UIButton {
 
+    // MARK: - Public properties
+
     public var variant: VariantType = .bluePrimary {
         didSet {
             updateAppearance(animated: false)
@@ -17,9 +19,7 @@ public class BrandButton: UIButton {
 
     public var updateWithAnimation: Bool = true
 
-    public var variantConfig: Variant {
-        variant.config
-    }
+    // MARK: - Inherited methods
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,11 +29,6 @@ public class BrandButton: UIButton {
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
-    }
-
-    private func setup() {
-        layer.cornerRadius = 4
-        layer.borderWidth = 1
     }
 
     public override var isEnabled: Bool {
@@ -48,6 +43,20 @@ public class BrandButton: UIButton {
         }
     }
 
+    override public func setTitle(_ title: String?, for state: UIControl.State) {}
+    override public func setImage(_ image: UIImage?, for state: UIControl.State) {}
+
+    // MARK: - Privates
+
+    private func setup() {
+        layer.cornerRadius = 4
+        layer.borderWidth = 1
+    }
+
+    private var variantConfig: Variant {
+        variant.config
+    }
+
     private func updateAppearance(animated: Bool) {
         let backgroundColor = variantConfig.backgroundColor(for: state)
         let borderColor = variantConfig.borderColor(for: state)
@@ -56,7 +65,4 @@ public class BrandButton: UIButton {
             self?.layer.borderColor = borderColor.cgColor
         }
     }
-
-    override public func setTitle(_ title: String?, for state: UIControl.State) {}
-    override public func setImage(_ image: UIImage?, for state: UIControl.State) {}
 }
