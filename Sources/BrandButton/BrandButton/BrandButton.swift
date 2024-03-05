@@ -54,6 +54,12 @@ public class BrandButton: UIControl {
         }
     }
 
+    public var sizeMode: Size = .regular {
+        didSet {
+            updateSize()
+        }
+    }
+
     public override var isEnabled: Bool {
         didSet {
             updateAppearance(animated: updateWithAnimation)
@@ -90,6 +96,7 @@ public class BrandButton: UIControl {
     private var textLabel: UILabel = .init()
     private var leadingIconView: UIImageView = .init()
     private var trailingIconView: UIImageView = .init()
+    private var contentHeightConstraint: NSLayoutConstraint?
     private var widthConstraint: NSLayoutConstraint?
 
     private func setup() {
@@ -98,11 +105,11 @@ public class BrandButton: UIControl {
         setupLeadingIconView()
         setupTextLabel()
         setupTrailingIconView()
+        updateSize()
     }
 
     private func setupButton() {
         layer.cornerRadius = 4
-        layer.borderWidth = 1
     }
 
     private func setupContentStack() {
@@ -111,22 +118,22 @@ public class BrandButton: UIControl {
         contentStack.alignment = .center
         contentStack.distribution = .fill
         contentStack.isUserInteractionEnabled = false
-        contentStack.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        contentHeightConstraint = contentStack.heightAnchor.constraint(equalToConstant: 0)
+        contentHeightConstraint?.isActive = true
         addSubview(contentStack, withInsets: .init(top: 10, leading: 16, bottom: 10, trailing: 16))
         contentStack.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
 
     private func setupLeadingIconView() {
         leadingIconView.contentMode = .scaleAspectFit
-        leadingIconView.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        leadingIconView.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        contentStack.addArrangedSubview(leadingIconView)
+        leadingIconView.heightAnchor.constraint(equalTo: contentStack.heightAnchor).isActive = true
+        leadingIconView.widthAnchor.constraint(equalTo: leadingIconView.heightAnchor).isActive = true
         leadingIconView.translatesAutoresizingMaskIntoConstraints = false
         leadingIconView.isHidden = true
-        contentStack.addArrangedSubview(leadingIconView)
     }
 
     private func setupTextLabel() {
-        textLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         textLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         textLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         contentStack.addArrangedSubview(textLabel)
@@ -134,11 +141,11 @@ public class BrandButton: UIControl {
 
     private func setupTrailingIconView() {
         trailingIconView.contentMode = .scaleAspectFit
-        trailingIconView.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        trailingIconView.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        contentStack.addArrangedSubview(trailingIconView)
+        trailingIconView.heightAnchor.constraint(equalTo: contentStack.heightAnchor).isActive = true
+        trailingIconView.widthAnchor.constraint(equalTo: trailingIconView.heightAnchor).isActive = true
         trailingIconView.translatesAutoresizingMaskIntoConstraints = false
         trailingIconView.isHidden = true
-        contentStack.addArrangedSubview(trailingIconView)
     }
 
     private var variantConfig: Variant {
@@ -155,5 +162,11 @@ public class BrandButton: UIControl {
             self?.textLabel.textColor = textColor
             self?.tintColor = textColor
         }
+    }
+
+    private func updateSize() {
+        contentHeightConstraint?.constant = sizeMode.contentHeight
+        textLabel.font = UIFont.systemFont(ofSize: sizeMode.fontSize, weight: sizeMode.fontWeight)
+        layer.borderWidth = sizeMode.borderWidth
     }
 }

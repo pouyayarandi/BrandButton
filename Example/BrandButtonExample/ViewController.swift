@@ -58,7 +58,11 @@ class ViewController: UIViewController {
     }
 
     @objc private func buttonTapped() {
-        button.fullWidth.toggle()
+        if segment.selectedSegmentIndex == 0 {
+            button.fullWidth.toggle()
+        } else {
+            button.sizeMode = button.sizeMode == .regular ? .medium : .regular
+        }
     }
 
     private func setupSegment() {
@@ -84,7 +88,7 @@ class ViewController: UIViewController {
         view.addSubview(button)
         NSLayoutConstraint.activate([
             view.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-            view.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            view.centerYAnchor.constraint(equalTo: button.centerYAnchor, constant: -12)
         ])
     }
 

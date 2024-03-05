@@ -90,6 +90,16 @@ final class BrandButtonTests: XCTestCase {
         assertDataSet(generator.generate())
     }
 
+    func testBrandButton_SizeMode() {
+        let generator = TestDataGenerator(
+            labels: ["Medium Button"],
+            variants: [.bluePrimary],
+            leadingIcons: [.init(systemName: "checkmark.seal.fill"), nil],
+            sizeModes: [.medium]
+        )
+        assertDataSet(generator.generate())
+    }
+
     func testBrandButton_GetterValues() {
         let image1 = UIImage(systemName: "checkmark.seal.fill")
         let image2 = UIImage(systemName: "checkmark.seal")
@@ -132,6 +142,7 @@ final class BrandButtonTests: XCTestCase {
             button.trailingIcon = data.trailingIcon
             button.isEnabled = data.isEnabled
             button.fullWidth = data.fullWidth
+            button.sizeMode = data.sizeMode
             assertSnapshot(testName: testName)
         }
     }

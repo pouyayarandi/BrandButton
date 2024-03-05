@@ -10,9 +10,9 @@ import BrandButton
 
 struct SwiftUIView: View {
 
-    @State var selection: Int = 0
+    @State private var selection: Int = 0
 
-    var label: String {
+    private var label: String {
         switch selection {
         case 0: return "Primary Button"
         case 1: return "Secondary Button"
@@ -21,7 +21,7 @@ struct SwiftUIView: View {
         }
     }
 
-    var variant: BrandButton.VariantType {
+    private var variant: BrandButton.VariantType {
         switch selection {
         case 0, 2: return .bluePrimary
         case 1: return .greenSecondary
@@ -29,22 +29,19 @@ struct SwiftUIView: View {
         }
     }
 
-    var isEnabled: Bool {
-        selection != 2
+    private var leadingIcon: UIImage? {
+        selection != 1 ? .init(systemName: "checkmark.seal.fill") : nil
     }
 
-    var leadingIcon: UIImage? {
-        selection == 0 ? .init(systemName: "checkmark.seal.fill") : nil
-    }
-
-    var trailingIcon: UIImage? {
+    private var trailingIcon: UIImage? {
         selection == 1 ? .init(systemName: "checkmark.seal") : nil
     }
 
-    @State var fullWidth: Bool = false
+    @State private var fullWidth: Bool = false
+    @State private var sizeMode: BrandButton.Size = .regular
 
     var body: some View {
-        VStack(spacing: 16) {
+        VStack {
             Picker("Style", selection: $selection, content: {
                 Text("Primary").tag(0)
                 Text("Secondary").tag(1)
@@ -60,9 +57,14 @@ struct SwiftUIView: View {
                 leadingIcon: leadingIcon,
                 trailingIcon: trailingIcon,
                 fullWidth: fullWidth,
-                isEnabled: isEnabled
+                isEnabled: selection != 2,
+                sizeMode: sizeMode
             ) {
-                fullWidth.toggle()
+                if selection == 0 {
+                    fullWidth.toggle()
+                } else {
+                    sizeMode = sizeMode == .regular ? .medium : .regular
+                }
             }
 
             Spacer()

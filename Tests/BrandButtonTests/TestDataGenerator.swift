@@ -18,6 +18,7 @@ struct TestDataGenerator {
         let trailingIcon: UIImage?
         let isEnabled: Bool
         let fullWidth: Bool
+        let sizeMode: BrandButton.Size
     }
 
     let labels: [String]
@@ -27,6 +28,7 @@ struct TestDataGenerator {
     var trailingIcons: [UIImage?] = [nil]
     var enables: [Bool] = [true]
     var fullWidths: [Bool] = [false]
+    var sizeModes: [BrandButton.Size] = [.regular]
 
     func generate() -> [TestData] {
         var testData: [TestData] = []
@@ -38,15 +40,18 @@ struct TestDataGenerator {
                         for trailingIcon in trailingIcons {
                             for enable in enables {
                                 for fullWidth in fullWidths {
-                                    testData.append(.init(
-                                        label: label,
-                                        isHighlighted: highlight,
-                                        variant: variant,
-                                        leadingIcon: leadingIcon,
-                                        trailingIcon: trailingIcon,
-                                        isEnabled: enable,
-                                        fullWidth: fullWidth
-                                    ))
+                                    for sizeMode in sizeModes {
+                                        testData.append(.init(
+                                            label: label,
+                                            isHighlighted: highlight,
+                                            variant: variant,
+                                            leadingIcon: leadingIcon,
+                                            trailingIcon: trailingIcon,
+                                            isEnabled: enable,
+                                            fullWidth: fullWidth,
+                                            sizeMode: sizeMode
+                                        ))
+                                    }
                                 }
                             }
                         }

@@ -32,7 +32,8 @@ final class BrandButtonViewTests: XCTestCase {
             labels: ["SwiftUI Button"],
             variants: [.bluePrimary, .greenSecondary],
             leadingIcons: [.init(systemName: "swift"), nil],
-            fullWidths: [false, true]
+            fullWidths: [false, true],
+            sizeModes: [.regular, .medium]
         ).generate()
 
         for data in dataSet {
@@ -41,6 +42,7 @@ final class BrandButtonViewTests: XCTestCase {
                 variant: data.variant,
                 leadingIcon: data.leadingIcon,
                 fullWidth: data.fullWidth,
+                sizeMode: data.sizeMode,
                 action: {})
             )
         }
@@ -48,10 +50,14 @@ final class BrandButtonViewTests: XCTestCase {
 
     private func assertSnapshot(_ view: BrandButtonView, testName: String = #function) {
         hostingView = .init(rootView: view)
-        SnapshotTesting.assertSnapshot(of: hostingView, as: .image(
-            precision: 0.99,
-            perceptualPrecision: 0.99,
-            size: .init(width: 300, height: 100))
+        SnapshotTesting.assertSnapshot(
+            of: hostingView,
+            as: .image(
+                precision: 0.99,
+                perceptualPrecision: 0.99,
+                size: .init(width: 300, height: 100)
+            ),
+            testName: testName
         )
     }
 

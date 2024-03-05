@@ -15,6 +15,7 @@ public struct BrandButtonView: UIViewRepresentable {
     private var trailingIcon: UIImage?
     private var fullWidth: Bool
     private var isEnabled: Bool
+    private var sizeMode: BrandButton.Size = .regular
     private var action: () -> Void
 
     public init(
@@ -24,6 +25,7 @@ public struct BrandButtonView: UIViewRepresentable {
         trailingIcon: UIImage? = nil,
         fullWidth: Bool = false,
         isEnabled: Bool = true,
+        sizeMode: BrandButton.Size = .regular,
         action: @escaping () -> Void
     ) {
         self.label = label
@@ -32,6 +34,7 @@ public struct BrandButtonView: UIViewRepresentable {
         self.trailingIcon = trailingIcon
         self.fullWidth = fullWidth
         self.isEnabled = isEnabled
+        self.sizeMode = sizeMode
         self.action = action
     }
 
@@ -48,6 +51,7 @@ public struct BrandButtonView: UIViewRepresentable {
         uiView.leadingIcon = leadingIcon
         uiView.trailingIcon = trailingIcon
         uiView.isEnabled = isEnabled
+        uiView.sizeMode = sizeMode
         uiView.onTap = action
         uiView.setContentHuggingPriority(
             fullWidth ? .defaultLow : .required,
