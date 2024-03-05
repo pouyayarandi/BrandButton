@@ -21,7 +21,7 @@ struct SwiftUIView: View {
         }
     }
 
-    private var variant: BrandButton.VariantType {
+    private var variant: BrandButton.Variant {
         switch selection {
         case 0, 2: return .bluePrimary
         case 1: return .greenSecondary
