@@ -60,9 +60,6 @@ public struct BrandButtonView: UIViewRepresentable {
 
 struct Preview: PreviewProvider {
     static var previews: some View {
-        HStack(spacing: 16) {
-            BrandButtonView(label: "Button", variant: .bluePrimary, leadingIcon: .init(systemName: "swift"), action: {})
-            BrandButtonView(label: "Long Text Button", variant: .blueSecondary, action: {})
-        }
+        BrandButtonView(label: "Button", variant: .bluePrimary, leadingIcon: .init(systemName: "swift"), action: {})
     }
 }
