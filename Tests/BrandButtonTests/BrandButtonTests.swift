@@ -4,8 +4,8 @@ import SnapshotTesting
 
 final class BrandButtonTests: XCTestCase {
 
-    var button: BrandButton!
-    var container: UIViewController!
+    private var button: BrandButton!
+    private var container: UIViewController!
 
     override class func setUp() {
         UIView.setAnimationsEnabled(false)
