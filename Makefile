@@ -3,13 +3,10 @@ SCHEME = BrandButton
 DEVICE = iPhone 15 Pro
 OS = latest
 DESTINATION = 'platform=iOS Simulator,OS=$(OS),name=$(DEVICE)'
+ARGS = -scheme $(SCHEME) -destination $(DESTINATION)
 
 build:
-	$(XCODEBUILD) build \
-		-scheme $(SCHEME) \
-		-destination $(DESTINATION)
+	$(XCODEBUILD) build $(ARGS)
 
 test:
-	$(XCODEBUILD) test \
-		-scheme $(SCHEME) \
-		-destination $(DESTINATION)
+	$(XCODEBUILD) test $(ARGS)
