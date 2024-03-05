@@ -9,15 +9,15 @@ import UIKit
 
 extension BrandButton {
 
-    public enum VariantType {
+    public enum Variant {
 
         case bluePrimary
         case blueSecondary
         case greenPrimary
         case greenSecondary
-        case custom(Variant)
+        case custom(VariantProtocol)
 
-        var config: Variant {
+        var config: VariantProtocol {
             switch self {
             case .bluePrimary:
                 return PrimaryVariant(

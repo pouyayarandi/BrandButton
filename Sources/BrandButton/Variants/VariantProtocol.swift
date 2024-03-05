@@ -23,13 +23,13 @@ public struct VariantTrait {
     }
 }
 
-public protocol Variant {
+public protocol VariantProtocol {
     var normalTrait: VariantTrait { get }
     var highlightedTrait: VariantTrait { get }
     var disabledTrait: VariantTrait { get }
 }
 
-extension Variant {
+extension VariantProtocol {
     func borderColor(for state: UIControl.State) -> UIColor {
         switch state {
         case .normal: return normalTrait.borderColor

@@ -7,7 +7,7 @@
 
 import UIKit
 
-public struct PrimaryVariant: Variant {
+public struct PrimaryVariant: VariantProtocol {
 
     let normalColor: UIColor
     let highlightedColor: UIColor

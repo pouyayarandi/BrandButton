@@ -11,7 +11,7 @@ public class BrandButton: UIControl {
 
     // MARK: - Public properties
 
-    public var variant: VariantType = .bluePrimary {
+    public var variant: Variant = .bluePrimary {
         didSet {
             updateAppearance(animated: false)
         }
@@ -148,7 +148,7 @@ public class BrandButton: UIControl {
         trailingIconView.isHidden = true
     }
 
-    private var variantConfig: Variant {
+    private var variantConfig: VariantProtocol {
         variant.config
     }
 

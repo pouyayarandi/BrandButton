@@ -13,7 +13,7 @@ struct TestDataGenerator {
     struct TestData {
         let label: String
         let isHighlighted: Bool
-        let variant: BrandButton.VariantType
+        let variant: BrandButton.Variant
         let leadingIcon: UIImage?
         let trailingIcon: UIImage?
         let isEnabled: Bool
@@ -23,7 +23,7 @@ struct TestDataGenerator {
 
     let labels: [String]
     var highlights: [Bool] = [false]
-    let variants: [BrandButton.VariantType]
+    let variants: [BrandButton.Variant]
     var leadingIcons: [UIImage?] = [nil]
     var trailingIcons: [UIImage?] = [nil]
     var enables: [Bool] = [true]

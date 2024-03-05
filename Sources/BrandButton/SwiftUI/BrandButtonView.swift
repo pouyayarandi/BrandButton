@@ -10,17 +10,17 @@ import SwiftUI
 public struct BrandButtonView: UIViewRepresentable {
 
     private var label: String
-    private var variant: BrandButton.VariantType
+    private var variant: BrandButton.Variant
     private var leadingIcon: UIImage?
     private var trailingIcon: UIImage?
     private var fullWidth: Bool
     private var isEnabled: Bool
-    private var sizeMode: BrandButton.Size = .regular
+    private var sizeMode: BrandButton.Size
     private var action: () -> Void
 
     public init(
         label: String,
-        variant: BrandButton.VariantType = .bluePrimary,
+        variant: BrandButton.Variant = .bluePrimary,
         leadingIcon: UIImage? = nil,
         trailingIcon: UIImage? = nil,
         fullWidth: Bool = false,
