@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftUI
+import BrandButton
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = ViewController()
+        let tabBar = UITabBarController()
+
+        tabBar.setViewControllers([
+            ViewController(), // UIKit
+            UIHostingController(rootView: SwiftUIView()) // SwiftUI
+        ], animated: false)
+
+        tabBar.tabBar.items?[0].title = "UIKit"
+        tabBar.tabBar.items?[1].title = "SwiftUI"
+
+        tabBar.tabBar.items?[0].image = UIImage(systemName: "swift")
+        tabBar.tabBar.items?[1].image = UIImage(systemName: "swift")
+
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
 
         return true

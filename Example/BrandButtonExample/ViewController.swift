@@ -30,21 +30,21 @@ class ViewController: UIViewController {
         case 0:
             button.updateWithAnimation = true
             button.variant = .bluePrimary
-            button.label = "Button"
+            button.label = "Primary Button"
             button.leadingIcon = .init(systemName: "checkmark.seal.fill")
             button.trailingIcon = nil
             button.isEnabled = true
         case 1:
             button.updateWithAnimation = true
             button.variant = .greenSecondary
-            button.label = "Button"
+            button.label = "Seconsdary Button"
             button.leadingIcon = nil
             button.trailingIcon = .init(systemName: "checkmark.seal")
             button.isEnabled = true
         case 2:
             button.updateWithAnimation = false
             button.variant = .bluePrimary
-            button.label = "Button"
+            button.label = "Disabled Button"
             button.leadingIcon = .init(systemName: "checkmark.seal.fill")
             button.trailingIcon = nil
             button.isEnabled = false
@@ -71,9 +71,9 @@ class ViewController: UIViewController {
         segment.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segment)
         NSLayoutConstraint.activate([
-            segment.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            segment.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-            segment.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8)
+            segment.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            segment.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            segment.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
     }
 
