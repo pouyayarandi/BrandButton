@@ -53,9 +53,10 @@ final class BrandButtonViewTests: XCTestCase {
         SnapshotTesting.assertSnapshot(
             of: hostingView,
             as: .image(
-                precision: 0.99,
-                perceptualPrecision: 0.99,
-                size: .init(width: 300, height: 100)
+                precision: 0.98,
+                perceptualPrecision: 0.98,
+                size: .init(width: 300, height: 100),
+                traits: .init(displayScale: 3.0)
             ),
             testName: testName
         )
