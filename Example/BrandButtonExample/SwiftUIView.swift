@@ -46,8 +46,9 @@ struct SwiftUIView: View {
                 Text("Primary").tag(0)
                 Text("Secondary").tag(1)
                 Text("Disabled").tag(2)
-            }).pickerStyle(.segmented)
-                .padding(.top)
+            })
+            .pickerStyle(.segmented)
+            .padding(.top)
 
             Spacer()
 
@@ -57,7 +58,6 @@ struct SwiftUIView: View {
                 leadingIcon: leadingIcon,
                 trailingIcon: trailingIcon,
                 fullWidth: fullWidth,
-                isEnabled: selection != 2,
                 sizeMode: sizeMode
             ) {
                 if selection == 0 {
@@ -66,6 +66,7 @@ struct SwiftUIView: View {
                     sizeMode = sizeMode == .regular ? .medium : .regular
                 }
             }
+            .disabled(selection == 2)
 
             Spacer()
         }
