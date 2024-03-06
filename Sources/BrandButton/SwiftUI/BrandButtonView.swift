@@ -35,25 +35,25 @@ public struct BrandButtonView: UIViewRepresentable {
         self.action = action
     }
 
-    public func makeUIView(context: Context) -> BrandButtonContainer {
+    public func makeUIView(context: Context) -> BrandButton {
         let uiView = BrandButtonContainer()
         uiView.setTapEvent()
         uiView.setContentHuggingPriority(.required, for: .vertical)
         return uiView
     }
     
-    public func updateUIView(_ uiView: BrandButtonContainer, context: Context) {
+    public func updateUIView(_ uiView: BrandButton, context: Context) {
         uiView.label = label
         uiView.variant = variant
         uiView.leadingIcon = leadingIcon
         uiView.trailingIcon = trailingIcon
         uiView.sizeMode = sizeMode
-        uiView.onTap = action
         uiView.setContentHuggingPriority(
             fullWidth ? .defaultLow : .required,
             for: .horizontal
         )
-        uiView.updateContentSize()
+        (uiView as? BrandButtonContainer)?.onTap = action
+        (uiView as? BrandButtonContainer)?.updateContentSize()
     }
 
 }

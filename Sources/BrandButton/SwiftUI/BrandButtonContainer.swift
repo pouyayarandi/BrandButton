@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BrandButtonContainer: BrandButton {
+final class BrandButtonContainer: BrandButton {
 
     var onTap: (() -> Void)?
 
