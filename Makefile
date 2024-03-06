@@ -9,6 +9,7 @@ ARGS = -scheme $(SCHEME) -destination $(DESTINATION)
 
 OUTPUT_PATH = .build
 DOCC_ARCHIVE = $$(find $(OUTPUT_PATH) -type d -name 'BrandButton.doccarchive')
+GH_PAGES_PATH = 'https://pouyayarandi.github.io/BrandButton/'
 
 .PHONY: build test doc
 
@@ -22,4 +23,4 @@ doc:
 	$(XCODEBUILD) docbuild $(ARGS) -derivedDataPath $(OUTPUT_PATH) && \
 	$(DOCC) process-archive transform-for-static-hosting $(DOCC_ARCHIVE) \
 	--output-path docs \
-	--hosting-base-path pouyayarandi.github.io
+	--hosting-base-path $(GH_PAGES_PATH)
