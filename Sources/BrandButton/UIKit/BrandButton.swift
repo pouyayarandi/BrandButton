@@ -7,18 +7,25 @@
 
 import UIKit
 
+/// BrandButton is a custom button styled based on Trivago's design system.
 public class BrandButton: UIControl {
 
     // MARK: - Public properties
-
+    
+    /// Style of the button based on predefined or custom variants.
+    ///
+    /// Default variant is bluePrimary.
     public var variant: Variant = .bluePrimary {
         didSet {
             updateAppearance(animated: false)
         }
     }
-
+    
+    /// A boolean value indicates the updates of the state should be
+    /// applied with animation.
     public var updateWithAnimation: Bool = true
-
+    
+    /// A string that is presented on the button
     public var label: String? {
         get {
             textLabel.text
@@ -27,7 +34,10 @@ public class BrandButton: UIControl {
             textLabel.text = newValue
         }
     }
-
+    
+    /// Image which is presented on the leading side of the button.
+    ///
+    /// The leading of the screen depends on the layout direction.
     public var leadingIcon: UIImage? {
         get {
             leadingIconView.image
@@ -38,6 +48,9 @@ public class BrandButton: UIControl {
         }
     }
 
+    /// Image which is presented on the trailing side of the button.
+    ///
+    /// The trailing of the screen depends on the layout direction.
     public var trailingIcon: UIImage? {
         get {
             trailingIconView.image
@@ -47,25 +60,32 @@ public class BrandButton: UIControl {
             trailingIconView.image = newValue
         }
     }
-
+    
+    /// A boolean value indicates the button should be presented in full
+    /// width of its superview.
     public var fullWidth: Bool = false {
         didSet {
             widthConstraint?.isActive = fullWidth
         }
     }
-
+    
+    /// A size value indicates button should be appeared in which size.
+    ///
+    /// Size will affect button's height and title's font.
     public var sizeMode: Size = .regular {
         didSet {
             updateSize()
         }
     }
-
+    
+    /// A boolean value indicates button is enabled or not.
     public override var isEnabled: Bool {
         didSet {
             updateAppearance(animated: updateWithAnimation)
         }
     }
 
+    /// A boolean value indicates button is highlighted or not.
     public override var isHighlighted: Bool {
         didSet {
             updateAppearance(animated: updateWithAnimation)

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// SwiftUI compatible view of BrandButton.
 public struct BrandButtonView: UIViewRepresentable {
 
     private var label: String

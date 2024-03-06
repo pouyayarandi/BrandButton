@@ -9,6 +9,9 @@ import UIKit
 
 extension BrandButton {
 
+    /// Sizing class of the BrandButton
+    /// 
+    /// It determines the size of the button content.
     public enum Size {
         case regular
         case medium

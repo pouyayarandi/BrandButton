@@ -9,6 +9,9 @@ import UIKit
 
 extension BrandButton {
 
+    /// Styling class of the BrandButton
+    /// 
+    /// It determines the appearance of the button.
     public enum Variant {
 
         case bluePrimary

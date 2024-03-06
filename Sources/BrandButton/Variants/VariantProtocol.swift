@@ -1,5 +1,5 @@
 //
-//  VariantConfig.swift
+//  VariantProtocol.swift
 //
 //
 //  Created by Pouya Yarandi on 3/2/24.
@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Describes appearance of the button for a particular state.
 public struct VariantTrait {
     let backgroundColor: UIColor
     let borderColor: UIColor
@@ -23,9 +24,17 @@ public struct VariantTrait {
     }
 }
 
+/// A protocol that describes the button appearance for normal, 
+/// highlighted and disabled states.
 public protocol VariantProtocol {
+
+    /// Defines the appearance of the button for the normal state.
     var normalTrait: VariantTrait { get }
+
+    /// Defines the appearance of the button for the highlighted state.
     var highlightedTrait: VariantTrait { get }
+
+    /// Defines the appearance of the button for the disabled state.
     var disabledTrait: VariantTrait { get }
 }
 
