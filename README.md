@@ -14,6 +14,9 @@ BrandButton is thoroughly tested to maintain consistent behavior and appearance 
 These project serves as valuable references for implementation and showcase the package's versatility.
 - [x] **Build and Test Pipeline:** Streamline your development workflow with a robust build and test pipeline. 
 The pipeline is designed to automate the process, providing efficiency and confidence in the reliability of the package.
+- [x] **Fully Documented:** BrandButton comes with comprehensive documentation, generated using DocC.
+This ensures that developers have access to clear and detailed information about the package,
+making it easy to understand, implement, and maintain. [Documentation Link](https://pouyayarandi.github.io/BrandButton/documentation/brandbutton)
 
 ## Installation
 
