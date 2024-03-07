@@ -91,6 +91,11 @@ Open the BrandButtonExample.xcodeproj file inside Example folder using Xcode.
 In the future, we plan to enhance BrandButton further to better accommodate accessibility needs, 
 including font size adjustments and addressing other accessibility requirements. Due to time constraints, 
 these improvements are currently on our roadmap, and we aim to implement them in upcoming releases. 
-Your patience and understanding are appreciated as we work towards making BrandButton even more inclusive and user-friendly. 
+Your patience and understanding are appreciated as we work towards making BrandButton even more inclusive and user-friendly.
+
+Also in the future, we plan to streamline the usage of BrandButton in SwiftUI by introducing SwiftUI modifiers for the BrandButtonView. 
+This enhancement will provide a more intuitive and concise way to apply modifications to BrandButton instances in SwiftUI, 
+allowing developers to leverage SwiftUI's modifier syntax for improved clarity and flexibility.
+
 Stay tuned for these upcoming enhancements!
 
