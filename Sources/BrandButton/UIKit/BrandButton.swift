@@ -129,18 +129,19 @@ public class BrandButton: UIControl {
     }
 
     private func setupButton() {
-        layer.cornerRadius = 4
+        layer.cornerRadius = Constants.cornerRadius
     }
 
     private func setupContentStack() {
-        contentStack.spacing = 12
+        contentStack.spacing = Constants.contentSpacing
         contentStack.axis = .horizontal
         contentStack.alignment = .center
         contentStack.distribution = .fill
         contentStack.isUserInteractionEnabled = false
         contentHeightConstraint = contentStack.heightAnchor.constraint(equalToConstant: 0)
         contentHeightConstraint?.isActive = true
-        addSubview(contentStack, withInsets: .init(top: 10, leading: 16, bottom: 10, trailing: 16))
+        let (v, h) = (Constants.verticalPadding, Constants.horizontalPadding)
+        addSubview(contentStack, withInsets: .init(top: v, leading: h, bottom: v, trailing: h))
         contentStack.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
 

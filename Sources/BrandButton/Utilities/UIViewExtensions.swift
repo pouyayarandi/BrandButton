@@ -11,8 +11,8 @@ extension UIView {
     static func perform(animated: Bool, block: @escaping () -> Void) {
         if animated {
             UIView.animate(
-                withDuration: 0.15,
-                delay: 0.0,
+                withDuration: Constants.animationDuration,
+                delay: Constants.animationDelay,
                 options: [.allowUserInteraction],
                 animations: block
             )
